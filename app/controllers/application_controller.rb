@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     
-    include SessinsHelper
+    include SessionsHelper
     
     private
     
@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
         unless logged_in?
             redirect_to login_url
         end
+    end
+    
+    def counts(user)
+        @count_microposts = user.microposts.count
     end
     
 end
